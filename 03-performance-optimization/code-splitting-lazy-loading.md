@@ -150,6 +150,26 @@ const preloadAnalytics = () => {
 
 ---
 
+## Preloading vs. Prefetching: What's the Difference?
+
+| Feature      | Preloading                        | Prefetching                        |
+|--------------|-----------------------------------|------------------------------------|
+| Priority     | High (immediate)                  | Low (idle time)                    |
+| When         | As soon as possible               | When browser is idle               |
+| Use case     | Resource needed very soon         | Resource might be needed later     |
+| Example      | Next page in a wizard             | Possible next route in navigation  |
+| HTML         | `<link rel="preload" ...>`      | `<link rel="prefetch" ...>`      |
+
+**Preloading** loads a resource as soon as possible, with high priority, because you know it will be needed very soon (e.g., the next page in a multi-step form). Use `<link rel="preload" ...>` for this.
+
+**Prefetching** loads a resource in the background, at low priority, because the user might need it in the future (but it's not certain). Use `<link rel="prefetch" ...>` for this.
+
+**Key takeaway:**
+- **Preload** = "I will need this soon, start loading it now!"
+- **Prefetch** = "I might need this later, fetch it when you have time."
+
+---
+
 ## Key Takeaways
 - Use code splitting and lazy loading to improve performance and user experience.
 - Always provide a fallback UI for lazy-loaded components.
